@@ -1,0 +1,28 @@
+E farming market
+
+1. product gallery
+2. product details
+3. price
+4. rating
+5. reviews
+6. add to cart
+7. location
+8. search
+9. filter by price, catagory, rating
+10. catagory
+11. offers
+12. availability
+13. seasonal crops
+14. remove from cart
+15. wishlist
+16. about us
+17. quantity in kg
+18. notification
+19. premium customer
+20. customer support
+21. trending product
+22. login
+23. logout
+24. settings
+25. buy again
+26. cart
