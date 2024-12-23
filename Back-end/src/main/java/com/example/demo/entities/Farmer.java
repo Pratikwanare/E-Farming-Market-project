@@ -1,17 +1,23 @@
 package com.example.demo.entities;
 
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="farmers")
@@ -29,6 +35,10 @@ public class Farmer {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "uid")
 	User user;
+	
+//	@OneToMany(mappedBy = "farmer")
+//	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+//	Set<Farmer_Product> farmer_product;
 	
 	public Farmer() {
 		super();
@@ -116,6 +126,6 @@ public class Farmer {
 
 	public void setUser(User user) {
 		this.user = user;
-	}	
-	
+	}
+
 }

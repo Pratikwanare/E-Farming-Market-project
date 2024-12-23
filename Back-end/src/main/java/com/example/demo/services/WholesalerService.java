@@ -20,19 +20,9 @@ public class WholesalerService {
 		return wrepo.findAll();
 	}
 	
-	public RegisterValid saveWholesaler(Wholesaler w)
+	public Wholesaler saveWholesaler(Wholesaler w)
 	{
-		Wholesaler wh= wrepo.save(w);
-		RegisterValid rv=new RegisterValid();
-		rv.setAadhar_no(wh.getAadhar_no());
-		rv.setArea(wh.getArea());
-		rv.setBdate(wh.getBdate());
-		rv.setCity(wh.getCity());
-		rv.setPan_no(wh.getPan_no());
-		rv.setPincode(wh.getPincode());
-		rv.setUser(wh.getUser());
-		
-		return rv;
+		return wrepo.save(w);
 	}
 	
 }

@@ -16,9 +16,22 @@ export default function Navbar(){
                         <li className="nav-item">
                             <Link to="/register" class="nav-link">Register</Link>
                         </li>
+                        
+                        <li className="nav-item" style={{marginLeft:'100px'}}>
+                            <input
+                                type="text"
+                                className="form-control me-2"
+                                placeholder="Search"
+                            />
+                        </li>
+                        &nbsp;&nbsp;&nbsp;
+                        <li>
+                            <button className="btn btn-primary">Search</button>
+                        </li>
                     </ul>
                 </div>
             </nav>
+
         </div>
     )
 }

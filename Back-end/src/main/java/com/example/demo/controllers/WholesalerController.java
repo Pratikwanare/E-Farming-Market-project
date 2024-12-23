@@ -26,7 +26,7 @@ public class WholesalerController {
 	}
 	
 	@PostMapping("/registerwholesaler")
-	public RegisterValid saveWholesaler(@RequestBody Wholesaler w)
+	public Wholesaler saveWholesaler(@RequestBody Wholesaler w)
 	{
 		return ws.saveWholesaler(w);
 	}

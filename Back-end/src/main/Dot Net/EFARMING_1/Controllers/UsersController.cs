@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using farmer.Data;
 using farmer.Models;
+using System.Data;
+using MySqlConnector;
 
 namespace EFARMING_1.Controllers
 {
@@ -18,10 +20,11 @@ namespace EFARMING_1.Controllers
 
         public UsersController(farmerDB context)
         {
+          
             _context = context;
         }
 
-        // GET: api/Users
+      
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -32,7 +35,7 @@ namespace EFARMING_1.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Users/5
+
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -49,6 +52,79 @@ namespace EFARMING_1.Controllers
 
             return user;
         }
+
+
+
+
+        /* [HttpGet]
+         public async Task<ActionResult<IEnumerable<User>>> GetFarmerUsers()
+         {
+             if (_context.Users == null)
+             {
+                 return NotFound();
+             }
+
+             dynamic farmers = await _context.Users.Where(user => user.Type == "a").ToListAsync();
+
+             return farmers;
+         }*/
+
+
+
+        // GET: api/Users
+        [HttpGet]
+        [Route("getallfarmersfromuser")]
+        public async Task<ActionResult<IEnumerable<User>>> GetFarmerUsers()
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+
+            var filteredUsers = await _context.Users
+                .Where(user => user.Type == "f")
+                .ToListAsync();
+
+            return filteredUsers;
+        }
+
+
+        // GET: api/Users
+        [HttpGet]
+        [Route("getadminfromuser")]
+        public async Task<ActionResult<IEnumerable<User>>> getadminfromuser()
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+
+            var filteredUsers = await _context.Users
+                .Where(user => user.Type == "a") 
+                .ToListAsync();
+
+            return filteredUsers;
+        }
+
+
+
+        [HttpGet]
+        [Route("getwholesaler")]
+        public async Task<ActionResult<IEnumerable<User>>> getwholesaler()
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+
+            var filteredUsers = await _context.Users
+                .Where(user => user.Type == "w") 
+                .ToListAsync();
+
+            return filteredUsers;
+        }
+
+
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
